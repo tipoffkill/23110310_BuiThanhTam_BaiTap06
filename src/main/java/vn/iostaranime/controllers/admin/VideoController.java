@@ -48,4 +48,10 @@ public class VideoController {
         ra.addFlashAttribute("message", "Xoá Video thành công!");
         return "redirect:/admin/videos";
     }
+    @GetMapping("/search")
+    public String search(@RequestParam String keyword, Model model) {
+        model.addAttribute("videos", videoService.search(keyword));
+        return "admin/videos/list";
+    }
+
 }

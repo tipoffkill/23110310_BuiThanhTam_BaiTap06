@@ -44,4 +44,10 @@ public class UserController {
         ra.addFlashAttribute("message", "Xoá User thành công!");
         return "redirect:/admin/users";
     }
+    @GetMapping("/search")
+    public String search(@RequestParam String keyword, Model model) {
+        model.addAttribute("users", service.search(keyword));
+        return "admin/users/list";
+    }
+
 }
